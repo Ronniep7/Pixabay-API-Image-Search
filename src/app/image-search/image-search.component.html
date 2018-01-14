@@ -1,0 +1,50 @@
+
+  <div id="first" >
+    <input class="search" mdInput [(ngModel)]="searchQuery" name="search" placeholder="Search for images">
+    <button (click)="searchImages(searchQuery)" class="btn btn-danger" type="button">Find Images</button>
+    <button (click)="ClearSearches()"  class="btn btn-primary" type="button">Clear</button>
+  </div>
+
+
+<div  id="second" >
+    <h4>Previous Searches :</h4>
+    <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Search Term</th>
+            <th>Service</th>
+            <th>Time</th>
+            <th>Num Of Results</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr (mouseover)="x()" (click)="SearchThis(i)" *ngFor="let Search of PreviousSearches;let i = index" >
+            <td>{{Search.SearchTerm}}</td>
+            <td>{{Search.Service}}</td>
+            <td>{{Search.Time | date:'h:m'}}</td>
+            <td>{{Search.NumofResults}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+
+
+<div class="container" >
+
+    <div  class="row" >
+        <div *ngFor="let image of images"  class="col-md-3" >
+            <div class=image-container>
+                <a href="{{ image.pageURL }}" target="_bank"  ></a>
+                  <img src="{{image.webformatURL}}">
+                  <p>Tags: {{ image.tags }}</p>
+                  <p>Comments: {{ image.comments }}</p>
+                  <p>Likes: {{ image.likes }}</p>
+              </div>
+        </div>
+        </div>
+
+</div>
+
+
+
+
